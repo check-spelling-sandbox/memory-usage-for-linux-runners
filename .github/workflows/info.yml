@@ -38,9 +38,9 @@ jobs:
       - name: stop services
         run: |
           (
-            echo '## systemctl stop php'
+            echo '## systemctl stop ...'
             echo '```'
-            sudo systemctl stop php8.1-fpm mono-xsp4
+            sudo systemctl stop php8.1-fpm mono-xsp4 walinuxagent multipathd walinuxagent
             echo '```'
           ) >> $GITHUB_STEP_SUMMARY
 
