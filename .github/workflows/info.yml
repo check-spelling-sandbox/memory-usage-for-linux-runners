@@ -25,3 +25,31 @@ jobs:
             systemctl | cat
             echo '```'
           ) >> $GITHUB_STEP_SUMMARY
+
+      - name: free
+        run: |
+          (
+            echo '## free'
+            echo '```'
+            free -h
+            echo '```'
+          ) >> $GITHUB_STEP_SUMMARY
+      
+      - name: stop php
+        run: |
+          (
+            echo '## systemctl stop php'
+            echo '```'
+            sudo systemctl stop php8.1-fpm.service
+            echo '```'
+          ) >> $GITHUB_STEP_SUMMARY
+
+      - name: free
+        run: |
+          (
+            echo '## free'
+            echo '```'
+            free -h
+            echo '```'
+          ) >> $GITHUB_STEP_SUMMARY
+      
