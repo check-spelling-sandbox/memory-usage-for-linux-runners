@@ -40,7 +40,7 @@ jobs:
           (
             echo '## systemctl stop ...'
             echo '```'
-            sudo systemctl stop php8.1-fpm mono-xsp4 walinuxagent multipathd walinuxagent runner-provisioner
+            sudo systemctl stop php8.1-fpm mono-xsp4 walinuxagent multipathd walinuxagent chrony cron getty@tty1 networkd-dispatcher rsyslog serial-getty@ttyS0 snapd
             echo '```'
           ) >> $GITHUB_STEP_SUMMARY
 
