@@ -94,10 +94,41 @@ jobs:
             echo '</details>'
           ) >> $GITHUB_STEP_SUMMARY
 
-      - name: swap
+      - name: check swap
         run: |
           (
-            echo '## swap'
+            echo '## check swap'
+            echo '```'
+            swapon -s
+            cat /proc/swaps
+            echo '```'
+          ) >> $GITHUB_STEP_SUMMARY
+
+      - name: disks
+        run: |
+          (
+            echo '## df'
+            echo '```'
+            df
+            echo '```'
+          ) >> $GITHUB_STEP_SUMMARY
+
+      - name: enable swap
+        run: |
+          (
+            echo '## enable swap'
+            echo '```'
+            sudo fallocate -l 10G /mnt/big-swapfile
+            sudo chmod 600 /mnt/big-swapfile
+            sudo mkswap /mnt/big-swapfile
+            sudo swapon /mnt/big-swapfile
+            echo '```'
+          ) >> $GITHUB_STEP_SUMMARY
+
+      - name: check swap
+        run: |
+          (
+            echo '## check swap'
             echo '```'
             swapon -s
             cat /proc/swaps
