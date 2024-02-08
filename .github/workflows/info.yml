@@ -45,7 +45,7 @@ jobs:
           (
             echo '## systemctl stop ...'
             echo '```'
-            sudo systemctl disable php8.1-fpm mono-xsp4 walinuxagent multipathd walinuxagent chrony cron getty@tty1 networkd-dispatcher rsyslog serial-getty@ttyS0 snapd
+            sudo systemctl disable php8.1-fpm mono-xsp4 walinuxagent multipathd walinuxagent chrony cron getty@tty1 networkd-dispatcher rsyslog serial-getty@ttyS0 snapd multipathd.socket snapd.socket
             sudo systemctl stop php8.1-fpm mono-xsp4 walinuxagent multipathd walinuxagent chrony cron getty@tty1 networkd-dispatcher rsyslog serial-getty@ttyS0 snapd
             sudo killall mono
             echo '```'
@@ -141,5 +141,15 @@ jobs:
             echo '## df'
             echo '```'
             df
+            echo '```'
+          ) >> $GITHUB_STEP_SUMMARY
+
+      - name: free
+        run: |
+          (
+            echo '## free'
+            echo '```'
+            free -h
+            free
             echo '```'
           ) >> $GITHUB_STEP_SUMMARY
