@@ -78,6 +78,6 @@ jobs:
           (
             echo '## pstree'
             echo '```'
-            sudo pstree -a -N -S -t -u -Z
+            sudo pstree -a -S -t -u -Z
             echo '```'
           ) >> $GITHUB_STEP_SUMMARY
