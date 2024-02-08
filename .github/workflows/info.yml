@@ -103,3 +103,12 @@ jobs:
             cat /proc/swaps
             echo '```'
           ) >> $GITHUB_STEP_SUMMARY
+
+      - name: disks
+        run: |
+          (
+            echo '## df'
+            echo '```'
+            df
+            echo '```'
+          ) >> $GITHUB_STEP_SUMMARY
