@@ -1,0 +1,17 @@
+name: memory
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  memory:
+    runs-on: ubuntu-latest
+    steps:
+      - name: ps
+        run: |
+          (
+            echo '```'
+            ps aux
+            echo '```'
+          ) >> $GITHUB_STEP_SUMMARY
