@@ -11,19 +11,23 @@ jobs:
       - name: ps
         run: |
           (
-            echo '## ps'
+            echo '<details><summary>ps</summary>'
+            echo
             echo '```'
             ps aux
             echo '```'
+            echo '</details>'
           ) >> $GITHUB_STEP_SUMMARY
 
       - name: systemctl
         run: |
           (
-            echo '## systemctl'
+            echo '<details><summary>systemctl</summary>'
+            echo
             echo '```'
             systemctl --type=service --state=running | cat
             echo '```'
+            echo '</details>'
           ) >> $GITHUB_STEP_SUMMARY
 
       - name: free
@@ -60,26 +64,42 @@ jobs:
       - name: ps
         run: |
           (
-            echo '## ps'
+            echo '<details><summary>ps</summary>'
+            echo
             echo '```'
             ps aux
             echo '```'
+            echo '</details>'
           ) >> $GITHUB_STEP_SUMMARY
 
       - name: systemctl
         run: |
           (
-            echo '## systemctl'
+            echo '<details><summary>systemctl</summary>'
+            echo
             echo '```'
             systemctl --type=service --state=running | cat
             echo '```'
+            echo '</details>'
           ) >> $GITHUB_STEP_SUMMARY
 
       - name: pstree
         run: |
           (
-            echo '## pstree'
+            echo '<details><summary>pstree</summary>'
+            echo
             echo '```'
             sudo pstree -a -S -t -u -Z
+            echo '```'
+            echo '</details>'
+          ) >> $GITHUB_STEP_SUMMARY
+
+      - name: swap
+        run: |
+          (
+            echo '## swap'
+            echo '```'
+            swapon -s
+            cat /proc/swaps
             echo '```'
           ) >> $GITHUB_STEP_SUMMARY
