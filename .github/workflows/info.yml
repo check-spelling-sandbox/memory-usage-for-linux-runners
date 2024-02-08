@@ -1,0 +1,27 @@
+name: info
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  info:
+    runs-on: ubuntu-latest
+    steps:
+      - name: ps
+        run: |
+          (
+            echo '## ps'
+            echo '```'
+            ps aux
+            echo '```'
+          ) >> $GITHUB_STEP_SUMMARY
+
+      - name: systemctl
+        run: |
+          (
+            echo '## systemctl'
+            echo '```'
+            systemctl | cat
+            echo '```'
+          ) >> $GITHUB_STEP_SUMMARY
