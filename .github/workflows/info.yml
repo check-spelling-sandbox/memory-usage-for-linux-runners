@@ -32,6 +32,7 @@ jobs:
             echo '## free'
             echo '```'
             free -h
+            free
             echo '```'
           ) >> $GITHUB_STEP_SUMMARY
       
@@ -50,6 +51,24 @@ jobs:
             echo '## free'
             echo '```'
             free -h
+            free
             echo '```'
           ) >> $GITHUB_STEP_SUMMARY
       
+      - name: ps
+        run: |
+          (
+            echo '## ps'
+            echo '```'
+            ps aux
+            echo '```'
+          ) >> $GITHUB_STEP_SUMMARY
+
+      - name: systemctl
+        run: |
+          (
+            echo '## systemctl'
+            echo '```'
+            systemctl --type=service --state=running | cat
+            echo '```'
+          ) >> $GITHUB_STEP_SUMMARY
